@@ -5,9 +5,9 @@ import './components/TodoComponents/Todo.css';
 import styled from 'styled-components';
 
 
-const StyledHeader = styled.div`
-background: blue;
-`;
+// const StyledHeader = styled.div`
+// background: blue;
+// `;
 
 
 const data = [
@@ -70,12 +70,11 @@ class App extends React.Component {
     });
   };
 
-  filterCompleted = completed => {
-    this.setState({
+  filterCompleted = ()=> {
+    this.setState({      
       todoItem: this.state.todoItem.filter(item =>{
-        if(item.completed === true){
-              delete item.task           
-        }
+        console.log(item.completed);          
+        return item.completed === false        
       })
     })
   };
@@ -84,10 +83,10 @@ class App extends React.Component {
     console.log('this is rendering...App.js')
     return (
       <div className = "App">
-        <StyledHeader className = "header">
+        <div className = "header">
           <h2>To-do by Ọlámidé</h2>
           <TodoForm addTodoItem={this.addTodoItem}/>
-        </StyledHeader>
+        </div>
         <TodoList 
           toggleDone={this.toggleDone} 
           todoItem={this.state.todoItem} 
